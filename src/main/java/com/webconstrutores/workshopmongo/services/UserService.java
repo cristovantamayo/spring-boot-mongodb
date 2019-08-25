@@ -35,6 +35,17 @@ public class UserService {
 		repo.deleteById(id);
 	}
 	
+	public User update(User entity) {
+		User dbEntity = repo.findById(entity.getId()).get();
+		updateData(dbEntity, entity);
+		return repo.save(dbEntity);
+	}
+	
+	private void updateData(User dbEntity, User entity) {
+		dbEntity.setName(entity.getName());
+		dbEntity.setEmail(entity.getEmail());
+	}
+
 	/*
 	 * Metodo referente a responsabilidade de UserDTO,
 	 * no entanto declarado na camada de servicos para usufluir de acesso ao banco de dados
