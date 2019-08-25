@@ -30,6 +30,11 @@ public class UserService {
 		return repo.insert(entity);
 	}
 	
+	public void delete(String id) {
+		findById(id);
+		repo.deleteById(id);
+	}
+	
 	/*
 	 * Metodo referente a responsabilidade de UserDTO,
 	 * no entanto declarado na camada de servicos para usufluir de acesso ao banco de dados
